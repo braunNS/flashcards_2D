@@ -1,3 +1,23 @@
-function criaCartao(categoria, pergunta, resposta) {
-    console.log(categoria, pergunta, resposta)
+function criaCartao(categoria, pergunta, resposta){
+    let cartao = document.createElement('article')
+    cartao.className = 'cartao'
+    cartao.innerHTML = `
+     <div class="cartao_conteudo">
+                    <h3>${categoria}</h3>
+                    <div class="cartao_pergunta">
+                        <p>${pergunta}</p>
+                    </div>
+                    <div class="cartao_resposta"> 
+                        <p>${resposta}</p>
+                    </div>
+                </div>
+   `
+   let respostaEstaVisivel = false
+   function viraCartao(){
+    respostaEstaVisivel= !respostaEstaVisivel
+    cartao.classList.toggle('active', respostaEstaVisivel)
+   }
+   cartao.addEventListener('click', viraCartao)
+   let container = document.getElementById('container')
+   container.appendChild(cartao)
 }
